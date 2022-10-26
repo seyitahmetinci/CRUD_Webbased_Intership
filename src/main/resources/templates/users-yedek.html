@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Name </th>
+        <th> Role </th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="user : ${users}">
+        <td><span th:text="${user.id}"> Title </span></td>
+        <td><span th:text="${user.name}"> Author </span></td>
+        <td><span th:text="${user.roles}"> Role </span></td>
+        <td>
+            <a th:href="@{'/edit/' + ${user.id}}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{'/delete/' + ${user.id}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<!--<p><a href="/signup">Add a new user</a></p>-->
+</div>
+
+<div class="col-sm-6">
+    <a class="btn btn-success" href="/signup" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add a new user</span></a>
+<!--    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>-->
+</div>
+
+
+
+
+</body>
+</html>

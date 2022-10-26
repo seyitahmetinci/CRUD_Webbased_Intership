@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Sign Up - CodeJava</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+	<style>
+		.error{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+
+<div class="container text-center">
+	<div>
+		<h1>User Registration</h1>
+	</div>
+	<div th:if="${user.id == null}"><h1> Create New User</h1></div>
+	<div th:unless="${user.id == null}"><h1> Edit User</h1></div>
+
+	<form th:action="@{/adduser}" th:object="${user}" method="post">
+		<input type="hidden" th:field="*{id}"/>
+		<div class="m-3">
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Name: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{name}" id="name" class="form-control"/>
+					<span th:if="${error}"  th:text="${error}">Error</span>
+<!--					<p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" />-->
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Password: </label>
+				<div class="col-8">
+					<input type="password" th:field="*{password}" id="password" class="form-control"/>
+				</div>
+			</div>
+
+
+<!--			<div class="col-1.5">-->
+<!--				<label th:for="*{roles}"  > User Type: </label>-->
+<!--				<select class="form-control form-control-sm" th:name="*{roles}" name="roles" id="agentName">-->
+<!--					<option value="">Select User Type</option>-->
+<!--					<option th:each="initializeRoles:${listRoles}"-->
+<!--							th:value="${initializeRoles.id}"-->
+<!--							th:text="${initializeRoles.name}"-->
+<!--							th:field="*{roles}"-->
+<!--					>-->
+<!--					</option>-->
+<!--				</select>-->
+<!--			</div>-->
+
+<!--			<div class="form-group row">-->
+<!--				<label class="col-4 col-form-label">Role is default: <b>USER</b> </label>-->
+<!--				<div class="col-8">-->
+<!--					<th:block th:each="role: ${listRoles}">-->
+<!--						<input type="checkbox" th:field="*{roles}"-->
+<!--							   th:text="${role}" th:value="${role}" class="m-2" />-->
+<!--					</th:block>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<select  id="rolename" th:field="*{roles}">-->
+<!--				<option th:value="'ADMIN'" th:text="ADMIN"></option>-->
+<!--				<option th:value="'USER'" th:text="USER"></option>-->
+<!--			</select>-->
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Roles: </label>
+				<div class="col-8">
+					<th:block th:each="role : ${listRoles}">
+						<div>
+							<input type="checkbox" th:field="*{roles}" th:text="${role.name}" th:value="${role.id}"/>
+						</div>
+					</th:block>
+				</div>
+			</div>
+
+
+
+<!--			<div class="col-8">-->
+
+<!--				<input type="checkbox" value="ADMIN" class="m-2" th:field="${givemerolename}" id="ADMIN" name="givemerolename"><input type="hidden" name="_roles" value="on">ADMIN-->
+
+<!--				<input type="checkbox" value="USER" class="m-2" th:field="${givemerolename}" id="USER" name="givemerolename"><input type="hidden" name="_roles" value="on">USER-->
+
+<!--			</div>-->
+
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Enabled: </label>
+				<div class="col-8">
+					<th:block>
+						<input type="checkbox" th:field="*{enabled}"/>
+					</th:block>
+				</div>
+			</div>
+
+
+			<div>
+				<button type="submit" class="btn btn-primary">Sign Up</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+
+</body>
+</html>
