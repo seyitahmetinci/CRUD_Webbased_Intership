@@ -12,7 +12,8 @@ Bootstrap,
 Thymeleaf,
 LDAP
 
-Work done:
+# Work done:
+
 Fig. 1: First view by the crud app is opened with listing user from database.
 ![1](https://github.com/seyitahmetinci/CRUD_Webbased_Intership/assets/85450000/5f96d8e2-efb0-4933-9962-cd701d450f3b)
 
