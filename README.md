@@ -7,7 +7,7 @@ Spring Boot & Spring Security used for this project.
 Spring Boot,
 Lombok,
 Spring Security,
-JPA Repo,
+Hibernate,
 Bootstrap,
 Thymeleaf,
 LDAP
